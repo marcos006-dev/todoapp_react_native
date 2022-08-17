@@ -30,7 +30,7 @@ const App = () => {
 
     setTasks(newTasks);
 
-    console.log(...newTasks);
+    // console.log(...newTasks);
   };
 
   const addTask = (task) => {
