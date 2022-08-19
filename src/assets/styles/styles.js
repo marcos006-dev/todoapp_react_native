@@ -21,6 +21,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 5,
   },
+  buttonWidth: {
+    width: '100%',
+    padding: 15,
+  },
+  crossOutTask: {
+    textDecorationLine: 'line-through',
+  },
 });
 
 export default styles;

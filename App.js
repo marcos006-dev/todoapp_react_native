@@ -1,15 +1,19 @@
+import 'react-native-gesture-handler';
 import { useEffect, useState } from 'react';
-
 // import styles from './src/assets/styles/styles';
 
 import Home from './src/views/Home';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import tareas from './data/tasks.json';
 import AddTask from './src/views/AddTask';
+import Drawe from './src/views/Drawe';
+import { Button } from 'react-native';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -30,7 +34,7 @@ const App = () => {
 
     setTasks(newTasks);
 
-    // console.log(...newTasks);
+    console.log(...newTasks);
   };
 
   const addTask = (task) => {
@@ -40,8 +44,19 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home">
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen
+          name="Home"
+          options={{
+            headerLeft: () => (
+              <Button
+                onPress={() => alert('This is a button!')}
+                title="Info"
+                color="#000"
+              />
+            ),
+          }}
+        >
           {({ navigation }) => (
             <Home
               tasks={tasks}
@@ -49,13 +64,16 @@ const App = () => {
               navigation={navigation}
             />
           )}
-        </Stack.Screen>
-        <Stack.Screen name="AddTask">
+        </Drawer.Screen>
+        <Drawer.Screen name="AddTask">
           {({ navigation }) => (
             <AddTask name="AddTask" navigation={navigation} addTask={addTask} />
           )}
-        </Stack.Screen>
-      </Stack.Navigator>
+        </Drawer.Screen>
+        <Drawer.Screen name="Drawe">
+          {({ navigation }) => <Drawe />}
+        </Drawer.Screen>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };

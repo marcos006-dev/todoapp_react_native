@@ -1,6 +1,7 @@
 import { Input, Button } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
+import styles from '../assets/styles/styles';
 
 const AddTask = ({ addTask, navigation }) => {
   const [newTask, setNewTask] = useState('');
@@ -22,7 +23,7 @@ const AddTask = ({ addTask, navigation }) => {
   };
 
   return (
-    <View>
+    <View style={styles.buttonWidth}>
       <Input
         name="newTask"
         placeholder="Ingrese un tarea"
