@@ -1,30 +1,19 @@
-import 'react-native-gesture-handler';
-import { useEffect, useState } from 'react';
-// import styles from './src/assets/styles/styles';
-
-import Home from './src/views/Home';
 import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useEffect, useState } from 'react';
+import AddTask from './src/views/AddTask';
+import Home from './src/views/Home';
 
 import tareas from './data/tasks.json';
-import AddTask from './src/views/AddTask';
-import Drawe from './src/views/Drawe';
-import { Button } from 'react-native';
 
-const Drawer = createDrawerNavigator();
-
+const Stack = createNativeStackNavigator();
 const App = () => {
   const [tasks, setTasks] = useState([]);
-
   useEffect(() => {
     setTasks(tareas);
   }, []);
-
   const handleChangeCheckbox = (taskSelected, isChecked) => {
     console.log(taskSelected);
-
     const newTasks = tasks.map((task) => {
       if (task.id === taskSelected.id) {
         task.completed = isChecked;
@@ -35,28 +24,17 @@ const App = () => {
     setTasks(newTasks);
 
     console.log(...newTasks);
+    // console.log(...newTasks);
   };
 
   const addTask = (task) => {
     const newTasks = [...tasks, task];
     setTasks(newTasks);
   };
-
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen
-          name="Home"
-          options={{
-            headerLeft: () => (
-              <Button
-                onPress={() => alert('This is a button!')}
-                title="Info"
-                color="#000"
-              />
-            ),
-          }}
-        >
+      <Stack.Navigator>
+        <Stack.Screen name="Home">
           {({ navigation }) => (
             <Home
               tasks={tasks}
@@ -64,18 +42,14 @@ const App = () => {
               navigation={navigation}
             />
           )}
-        </Drawer.Screen>
-        <Drawer.Screen name="AddTask">
+        </Stack.Screen>
+        <Stack.Screen name="AddTask">
           {({ navigation }) => (
             <AddTask name="AddTask" navigation={navigation} addTask={addTask} />
           )}
-        </Drawer.Screen>
-        <Drawer.Screen name="Drawe">
-          {({ navigation }) => <Drawe />}
-        </Drawer.Screen>
-      </Drawer.Navigator>
+        </Stack.Screen>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
 export default App;

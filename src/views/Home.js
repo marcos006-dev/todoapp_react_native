@@ -27,14 +27,6 @@ const Home = ({ tasks, handleChangeCheckbox, navigation }) => {
         >
           Mostrar Formulario
         </Button>
-
-        <Button
-          color="secondary"
-          onPress={() => navigation.navigate('Drawe')}
-          size="lg"
-        >
-          Mostrar Formulario
-        </Button>
       </View>
     </View>
   );
