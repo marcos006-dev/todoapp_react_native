@@ -1,11 +1,13 @@
 import { Input, Button } from '@rneui/themed';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  Text,
 } from 'react-native';
 import styles from '../assets/styles/styles';
 
@@ -16,7 +18,7 @@ const AddTask = ({ addTask, navigation }) => {
     console.log(textTask);
     setNewTask(textTask);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     // e.preventDefault();
     console.log();
     const newTaskObject = {
@@ -43,11 +45,16 @@ const AddTask = ({ addTask, navigation }) => {
           />
 
           <Button color="secondary" size="lg" onPress={handleSubmit}>
-            Agregar Tarea
+            <Text>Agregar Tarea</Text>
           </Button>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
+};
+
+AddTask.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  addTask: PropTypes.func.isRequired,
 };
 export default AddTask;

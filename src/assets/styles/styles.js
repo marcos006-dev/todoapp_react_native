@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+const color = '#000000';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -39,12 +41,12 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 40,
-    borderColor: '#000000',
+    borderColor: color,
     borderBottomWidth: 1,
     marginBottom: 36,
   },
   btnContainer: {
-    backgroundColor: 'white',
+    backgroundColor: color,
     marginTop: 12,
   },
 });
