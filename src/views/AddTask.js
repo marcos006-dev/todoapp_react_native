@@ -11,16 +11,16 @@ import {
 } from 'react-native';
 import styles from '../assets/styles/styles';
 
-const AddTask = ({ addTask, navigation }) => {
+function AddTask({ addTask, navigation }) {
   const [newTask, setNewTask] = useState('');
 
   const handleChange = (textTask) => {
-    console.log(textTask);
+    // console.log(textTask);
     setNewTask(textTask);
   };
   const handleSubmit = () => {
     // e.preventDefault();
-    console.log();
+    // console.log();
     const newTaskObject = {
       id: Math.random().toString(),
       name: newTask,
@@ -51,10 +51,10 @@ const AddTask = ({ addTask, navigation }) => {
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
-};
+}
 
 AddTask.propTypes = {
-  navigation: PropTypes.object.isRequired,
+  navigation: PropTypes.instanceOf(Object).isRequired,
   addTask: PropTypes.func.isRequired,
 };
 export default AddTask;

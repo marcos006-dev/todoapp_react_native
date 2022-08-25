@@ -5,7 +5,7 @@ module.exports = {
     node: true,
     'react-native/react-native': true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  extends: ['plugin:react/recommended', 'airbnb'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -16,6 +16,7 @@ module.exports = {
   },
   plugins: ['react', 'react-native'],
   rules: {
+    'linebreak-style': 0,
     'react-native/no-unused-styles': 2,
     'react-native/split-platform-components': 2,
     'react-native/no-inline-styles': 2,
@@ -24,6 +25,7 @@ module.exports = {
     'react-native/no-single-element-style-arrays': 2,
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    // 'no-param-reassign': 0,
   },
   ignorePatterns: ['node_modules', 'build', 'dist', 'public'],
 };

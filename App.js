@@ -2,16 +2,16 @@ import 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { useEffect, useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import AddTask from './src/views/AddTask';
 import Home from './src/views/Home';
 
 import tareas from './data/tasks.json';
-import { NavigationContainer } from '@react-navigation/native';
 import Pruebas from './src/views/Pruebas';
 
 const Drawer = createDrawerNavigator();
 
-const App = () => {
+function App() {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
     setTasks(tareas);
@@ -19,15 +19,18 @@ const App = () => {
   const handleChangeCheckbox = (taskSelected, isChecked) => {
     // console.log(taskSelected);
     const newTasks = tasks.map((task) => {
-      if (task.id === taskSelected.id) {
-        task.completed = isChecked;
+      const taskEdit = task;
+
+      if (taskEdit.id === taskSelected.id) {
+        taskEdit.completed = isChecked;
       }
-      return task;
+
+      return taskEdit;
     });
 
     setTasks(newTasks);
 
-    console.log(...newTasks);
+    // console.log(...newTasks);
     // console.log(...newTasks);
   };
 
@@ -70,6 +73,6 @@ const App = () => {
       </Drawer.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 export default App;

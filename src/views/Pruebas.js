@@ -9,7 +9,8 @@ import {
   Button,
   Keyboard,
 } from 'react-native';
-const KeyboardAvoidingComponent = () => {
+
+function KeyboardAvoidingComponent() {
   return (
     <KeyboardAvoidingView
       keyboardVerticalOffset={20 + 47}
@@ -29,7 +30,7 @@ const KeyboardAvoidingComponent = () => {
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
-};
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
